@@ -5,9 +5,11 @@ const app = express();
 const PORT = 3000;
 app.use(cors()); // ADD THIS LINE
 // Replace with your MongoDB URI
+//  mongodb+srv://guptaansh912:guptaji@cluster0.kc57p0u.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 const MONGODB_URI =
-  "mongodb+srv://shivansh:shivansh@flipkartdata.koizn7a.mongodb.net/shivansh?retryWrites=true&w=majority&appName=FlipkartData";
+  "mongodb+srv://guptaansh912:guptaji@cluster0.kc57p0u.mongodb.net/guptaansh912?retryWrites=true&w=majority&appName=Cluster0";
 mongoose.connect(MONGODB_URI, {
+  
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -31,10 +33,10 @@ const flipkartSchema = new mongoose.Schema(
     brand: String,
     product_specifications: mongoose.Schema.Types.Mixed,
   },
-  { collection: "flipkart" }
+  { collection: "Myntra" }
 );
 
-const Flipkart = mongoose.model("flipkart", flipkartSchema);
+const Flipkart = mongoose.model("Myntra", flipkartSchema);
 
 // Route to get data in chunks of 20
 app.get("/data", cors(), async (req, res) => { // ADD THIS LINE
@@ -55,3 +57,4 @@ const server = app.listen(PORT, () => {
 });
 
 server.timeout = 300000; // 300000 milliseconds = 5 minutes
+
